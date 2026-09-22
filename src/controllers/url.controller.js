@@ -1,5 +1,5 @@
 
-import urlgenration  from "../services/url.service.js"
+import {urlgenration ,urlservice}  from "../services/url.service.js"
 
 const urlshortner = async(req ,res)=>{
 const url = req.body
@@ -11,4 +11,14 @@ const url = req.body
     
 }
 
-export default urlshortner
+const url = async(req, res)=>{
+     const shortcode = req.params.shortcode
+     const result = await  urlservice(shortcode)
+if (!result) {
+    return res.status(404).json({
+        message: "Shortcode not found"
+    });
+}
+   res.redirect(result.originalUrl);
+}
+export { urlshortner, url };

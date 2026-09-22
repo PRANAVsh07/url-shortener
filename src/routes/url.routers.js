@@ -1,8 +1,8 @@
 import express  from"express"
-import urlshortner  from "../controllers/url.controller.js";
+import { urlshortner, url } from "../controllers/url.controller.js";
 
 const router= express.Router()
 
  router.post("/",urlshortner);
-
+ router.get("/:shortcode",url);
  export default router

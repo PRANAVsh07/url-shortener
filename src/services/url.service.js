@@ -28,14 +28,15 @@ const urlgenration= async(data)=>{
 );
   
 const id = result.seq;
-const shortcode = tobase64(id)
+const shortcode = tobase62(id)
 
 
 data.shortCode = shortcode;
 
 
     const oldurl = await url.create(data)
-
+   
+return oldurl;
      }
 
 catch(err){
@@ -43,4 +44,19 @@ throw(err);
 }
 }
 
-export default urlgenration
+const urlservice = async(data)=>{
+  try{
+  const result =await  url.findOne({ shortCode: data })
+  if(!result){
+    return null
+  }
+
+  return result;
+  }
+  catch(err){
+    throw(err)
+  }
+}
+
+
+export {urlservice  ,urlgenration};

@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const COUNTER = new mongoose.Schema({
   
-    id:{
+    _id:{
         type:String
     },
     seq:{
