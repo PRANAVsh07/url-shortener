@@ -1,4 +1,4 @@
-import url from"../models/user.model.js"
+import url from"../models/url.model.js"
 import counter from"../models/counter.model.js"
 
 const tobase62 = (number) => {
@@ -16,7 +16,7 @@ const tobase62 = (number) => {
     
 };
 const urlgenration= async(data)=>{
-     try{
+     
   
 
      
@@ -37,26 +37,21 @@ data.shortCode = shortcode;
     const oldurl = await url.create(data)
    
 return oldurl;
-     }
+     
 
-catch(err){
-throw(err);
-}
+
+
+
 }
 
 const urlservice = async(data)=>{
-  try{
+  
   const result =await  url.findOne({ shortCode: data })
-  if(!result){
-    return null
-  }
-
+ 
   return result;
   }
-  catch(err){
-    throw(err)
-  }
-}
+ 
+
 
 
 export {urlservice  ,urlgenration};
